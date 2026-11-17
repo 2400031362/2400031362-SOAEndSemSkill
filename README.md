@@ -1,31 +1,70 @@
-JWT Spring Boot Demo
+# JWT Spring Boot Demo
 
-Requirements:
-- JDK 17 or newer
-- Maven (or use the Maven wrapper/import Maven project in Eclipse)
-- Postman (optional, for testing)
+A Spring Boot application that generates JSON Web Tokens (JWT) using user details.
 
-Run:
-1. Extract the ZIP.
-2. Import the extracted folder into Eclipse as an Existing Maven Project.
-3. Wait for Maven dependencies to download.
-4. Open src/main/java/com/example/demo/DemoApplication.java.
-5. Right-click -> Run As -> Java Application (or Spring Boot App).
-6. Confirm the console shows Tomcat started on port 8080.
+## Technologies Used
+- Java 17
+- Spring Boot 3.4.5
+- Maven
+- JSON Web Token (JJWT 0.12.6)
+- Eclipse IDE
 
-Test in Postman:
-- Method: POST
-- URL: http://localhost:8080/generate-token
-- Body -> raw -> JSON:
+## Project Structure
 
+```text
+JWT-Spring-Boot-Project/
+│
+├── .settings/
+│
+├── src/
+│   └── main/
+│       ├── java/
+│       │   └── com/
+│       │       └── example/
+│       │           └── demo/
+│       │               ├── DemoApplication.java
+│       │               ├── JwtController.java
+│       │               └── JwtService.java
+│       │
+│       └── resources/
+│           └── application.properties
+│
+├── target/
+│   └── classes/
+│
+├── .classpath
+├── .project
+├── .gitignore
+├── pom.xml
+└── README.md
+```
+
+## Features
+- Generates JWT tokens.
+- Uses HS256 algorithm.
+- Token expiration set to 1 hour.
+- Accepts user ID, username and role.
+
+## API Endpoint
+
+**Method:** POST
+
+**URL:** `http://localhost:8080/generate-token`
+
+**Request Body:**
+
+```json
 {
   "id": 101,
   "username": "Lokesh",
   "role": "ADMIN"
 }
+```
 
-A successful response contains a message and a JWT token.
+**Response:** Returns a success message and generated JWT token.
 
-Note:
-The secret key is hardcoded only for this learning/demo project. For production,
-store a strong secret in a secure environment variable or secret manager.
+## How to Run
+1. Import the project into Eclipse as an Existing Maven Project.
+2. Wait for Maven dependencies to download.
+3. Run `DemoApplication.java` as a Java Application.
+4. Test the API using YARC REST Client or Postman.
