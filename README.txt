@@ -1,31 +1,61 @@
-JWT Spring Boot Demo
+# JWT Spring Boot Demo
 
-Requirements:
-- JDK 17 or newer
-- Maven (or use the Maven wrapper/import Maven project in Eclipse)
-- Postman (optional, for testing)
+A simple Spring Boot application that generates JSON Web Tokens (JWT) using user details.
 
-Run:
-1. Extract the ZIP.
-2. Import the extracted folder into Eclipse as an Existing Maven Project.
-3. Wait for Maven dependencies to download.
-4. Open src/main/java/com/example/demo/DemoApplication.java.
-5. Right-click -> Run As -> Java Application (or Spring Boot App).
-6. Confirm the console shows Tomcat started on port 8080.
+## Project Structure
 
-Test in Postman:
-- Method: POST
-- URL: http://localhost:8080/generate-token
-- Body -> raw -> JSON:
+```text
+jwt-spring-boot-demo/
+│
+├── src/
+│   └── main/
+│       ├── java/com/example/demo/
+│       │   ├── DemoApplication.java
+│       │   ├── JwtController.java
+│       │   └── JwtService.java
+│       │
+│       └── resources/
+│           └── application.properties
+│
+├── pom.xml
+├── README.md
+└── .gitignore
+```
 
+## Technologies Used
+
+- Java 17
+- Spring Boot
+- Maven
+- JSON Web Token (JWT)
+- Postman
+
+## Features
+
+- JWT token generation
+- User ID, username and role as token claims
+- Token issue and expiration time
+- REST API integration
+
+## API Endpoint
+
+**POST** `/generate-token`
+
+Sample Request:
+
+```json
 {
   "id": 101,
-  "username": "Lokesh",
-  "role": "ADMIN"
+  "username": "lokesh",
+  "role": "USER"
 }
+```
 
-A successful response contains a message and a JWT token.
+## How to Run
 
-Note:
-The secret key is hardcoded only for this learning/demo project. For production,
-store a strong secret in a secure environment variable or secret manager.
+1. Import the project into Eclipse as a Maven project.
+2. Update Maven dependencies.
+3. Run `DemoApplication.java`.
+4. Test the API using Postman or any REST client.
+
+**Server:** `http://localhost:8080`
